@@ -6,6 +6,8 @@ body {
 
 textarea{
   background: transparent;
+  height: 100%;
+  width:100%;
   border: none;
   resize: none;
   color: #000000;
@@ -63,6 +65,8 @@ textarea{
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
+  height: 100%;
+  width:100%;
 }
 
 .saveBtn i:hover {
