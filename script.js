@@ -25,3 +25,35 @@ $( document ).ready(function() {
 
         getLocalStorage(i);
     }
+
+    function formatAMPM(hours) {
+        var ampm = hours >= 12 ? 'pm' : 'am';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        return hours + ampm;
+    }
+formatAMPM();
+
+function updateColors(){
+        var currentTime = new Date().getHours();
+        for (var i = 9; i < 18; i++) { 
+        console.log(currentTime, $(`#${i}`).data("time"));
+         if ($(`#${i}`).data("time") == currentTime){
+            $(`#text${i}`).addClass( "present");
+        } else if (currentTime < $(`#${i}`).data("time")) {
+            $(`#text${i}`).addClass( "future");
+        }
+    }
+} 
+
+
+setInterval(function() {
+    updateColors();
+}, 1000);
+    
+var saveBtn = $('.saveBtn');
+saveBtn.on('click', function(){
+    let eventId = $(this).attr('id');
+    let eventText = $(this).parent().siblings().children('.description').val();
+    localStorage.setItem(eventId, eventText);
+});});    
